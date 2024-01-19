@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const cors = require("cors");
 
-const MONGODB_URI = "mongodb://localhost:27017/CarRental";
+// const MONGODB_URI = "mongodb+srv://ahmohil:<password>@first.ju1xh4b.mongodb.net/?retryWrites=true&w=majority";
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(authRoutes);
 
 mongoose
-	.connect(MONGODB_URI)
+	.connect(process.env.MONGODB_URI)
 	.then(() => {
 		app.listen(3000);
 	})
